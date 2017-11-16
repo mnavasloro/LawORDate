@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+        <action>
+            <actionName>run</actionName>
+            <packagings>
+                <packaging>jar</packaging>
+            </packagings>
+            <goals>
+                <goal>process-classes</goal>
+                <goal>org.codehaus.mojo:exec-maven-plugin:1.2.1:exec</goal>
+            </goals>
+            <properties>
+                <exec.args>-classpath %classpath oeg.LawORDate.Main "Tal y como establece el artÃ­culo 3.e de la Ley 22/2011, de 28 de julio, de residuos y suelos contaminados, (BOE: 29/07/2011) es Â«Residuo peligrosoÂ»: residuo que presenta una o varias de las caracterÃ­sticas peligrosas enumeradas en el anexo III, y aquÃ©l que pueda aprobar el Gobierno de conformidad con lo establecido en la normativa europea o en los convenios internacionales de los que EspaÃ±a sea parte, asÃ­ como los recipientes y envases que los hayan contenido."</exec.args>
+                <exec.executable>java</exec.executable>
+            </properties>
+        </action>
+        <action>
+            <actionName>debug</actionName>
+            <packagings>
+                <packaging>jar</packaging>
+            </packagings>
+            <goals>
+                <goal>process-classes</goal>
+                <goal>org.codehaus.mojo:exec-maven-plugin:1.2.1:exec</goal>
+            </goals>
+            <properties>
+                <exec.args>-Xdebug -Xrunjdwp:transport=dt_socket,server=n,address=${jpda.address} -classpath %classpath oeg.LawORDate.Main "Tal y como establece el artÃ­culo 3.e de la Ley 22/2011, de 28 de julio, de residuos y suelos contaminados, (BOE: 29/07/2011) es Â«Residuo peligrosoÂ»: residuo que presenta una o varias de las caracterÃ­sticas peligrosas enumeradas en el anexo III, y aquÃ©l que pueda aprobar el Gobierno de conformidad con lo establecido en la normativa europea o en los convenios internacionales de los que EspaÃ±a sea parte, asÃ­ como los recipientes y envases que los hayan contenido."</exec.args>
+                <exec.executable>java</exec.executable>
+                <jpda.listen>true</jpda.listen>
+            </properties>
+        </action>
+        <action>
+            <actionName>profile</actionName>
+            <packagings>
+                <packaging>jar</packaging>
+            </packagings>
+            <goals>
+                <goal>process-classes</goal>
+                <goal>org.codehaus.mojo:exec-maven-plugin:1.2.1:exec</goal>
+            </goals>
+            <properties>
+                <exec.args>-classpath %classpath oeg.LawORDate.Main "Tal y como establece el artÃ­culo 3.e de la Ley 22/2011, de 28 de julio, de residuos y suelos contaminados, (BOE: 29/07/2011) es Â«Residuo peligrosoÂ»: residuo que presenta una o varias de las caracterÃ­sticas peligrosas enumeradas en el anexo III, y aquÃ©l que pueda aprobar el Gobierno de conformidad con lo establecido en la normativa europea o en los convenios internacionales de los que EspaÃ±a sea parte, asÃ­ como los recipientes y envases que los hayan contenido."</exec.args>
+                <exec.executable>java</exec.executable>
+            </properties>
+        </action>
+    </actions>
