@@ -31,12 +31,20 @@ public class Lawordate extends HttpServlet {
      */
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
             String body =getBody(req);
-            String parsed = Main.parseLegalRef(body);
+//            String parsed = Main.parseLegalRef(body);
+            Salida parsedSalida = Main.parseLegalRef(body);
+            String parsed = parsedSalida.txt;
             PrintWriter w = resp.getWriter();
             resp.setStatus(200);
             resp.setContentType("text/plain;charset=utf-8");
             resp.setCharacterEncoding("utf-8");
             w.println(parsed);
+            //MNL
+            String unparsed = Main.unParseLegalRef(parsedSalida);
+            w.println("---------------------");
+            w.println(parsedSalida.toString());
+            w.println("---------------------");
+            w.println(unparsed);
     }
     
     /**
