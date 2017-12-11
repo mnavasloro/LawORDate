@@ -64,9 +64,9 @@ public class Main {
         listaRegex.put("(([R|r](eal|EAL) [D|d](ecreto|ECRETO)) (\\d*)\\/(\\d*))(,? de (\\d+) de ([E|e]nero|[F|f]ebrero|[M|m]arzo|[A|a]bril|[M|m]ayo|[J|j]unio|[J|j]ulio|[A|a]gosto|[S|s]emptiembre|[O|o]ctubre|[N|n]oviembre|[D|d]iciembre)( de (\\d\\d\\d\\d))?)?", "RefRealDecreto");
         listaRegex.put("(([R|r](eal|EAL) [D|d](ecreto|ECRETO) [L|l](egislativo|EGISLATIVO)) (\\d*)\\/(\\d*))(,? de (\\d*) de ([E|e]nero|[F|f]ebrero|[M|m]arzo|[A|a]bril|[M|m]ayo|[J|j]unio|[J|j]ulio|[A|a]gosto|[S|s]emptiembre|[O|o]ctubre|[N|n]oviembre|[D|d]iciembre)( de (\\d\\d\\d\\d))?)?", "RefRealDecretoLeg");
         listaRegex.put("([L|l]ey (\\d*)\\/(\\d*))(,? de (\\d*) de ([E|e]nero|[F|f]ebrero|[M|m]arzo|[A|a]bril|[M|m]ayo|[J|j]unio|[J|j]ulio|[A|a]gosto|[S|s]emptiembre|[O|o]ctubre|[N|n]oviembre|[D|d]iciembre)( de (\\d\\d\\d\\d))?)?", "RefLey");
-        listaRegex.put("(BOE|[B|b]olet[í|i]n [O|o]ficial del [E|e]stado|BOLETIN OFICIAL DEL ESTADO):? (\\d+)\\/(\\d*)\\/(\\d*)", "RefB3");
-        listaRegex.put("(BOE|[B|b]olet[í|i]n [O|o]ficial del [E|e]stado|BOLETIN OFICIAL DEL ESTADO)(,? de (\\d+) de ([E|e]nero|[F|f]ebrero|[M|m]arzo|[A|a]bril|[M|m]ayo|[J|j]unio|[J|j]ulio|[A|a]gosto|[S|s]emptiembre|[O|o]ctubre|[N|n]oviembre|[D|d]iciembre)( de (\\d\\d\\d\\d))?)?", "RefB1");
-        listaRegex.put("(BOE|[B|b]olet[í|i]n [O|o]ficial del [E|e]stado|BOLETIN OFICIAL DEL ESTADO)( (([N|n][ú|u]m(\\.?|ero)|N[Ú|U]M(\\.?|ERO)) \\d+))(,? de (\\d*) de ([E|e]nero|[F|f]ebrero|[M|m]arzo|[A|a]bril|[M|m]ayo|[J|j]unio|[J|j]ulio|[A|a]gosto|[S|s]emptiembre|[O|o]ctubre|[N|n]oviembre|[D|d]iciembre)( de (\\d\\d\\d\\d))?)?", "RefB2");
+        listaRegex.put("(BOE|[B|b]olet[í|i]n [O|o]ficial del [E|e]stado|BOLETIN OFICIAL DEL ESTADO)(:?) (\\d+)\\/(\\d*)\\/(\\d*)", "RefB3");
+        listaRegex.put("(BOE|[B|b]olet[í|i]n [O|o]ficial del [E|e]stado|BOLETIN OFICIAL DEL ESTADO)((,?) de (\\d+) de ([E|e]nero|[F|f]ebrero|[M|m]arzo|[A|a]bril|[M|m]ayo|[J|j]unio|[J|j]ulio|[A|a]gosto|[S|s]emptiembre|[O|o]ctubre|[N|n]oviembre|[D|d]iciembre)( de (\\d\\d\\d\\d))?)?", "RefB1");
+        listaRegex.put("(BOE|[B|b]olet[í|i]n [O|o]ficial del [E|e]stado|BOLETIN OFICIAL DEL ESTADO)( (([N|n][ú|u]m(\\.?|ero)|N[Ú|U]M(\\.?|ERO)) \\d+))((,?) de (\\d*) de ([E|e]nero|[F|f]ebrero|[M|m]arzo|[A|a]bril|[M|m]ayo|[J|j]unio|[J|j]ulio|[A|a]gosto|[S|s]emptiembre|[O|o]ctubre|[N|n]oviembre|[D|d]iciembre)( de (\\d\\d\\d\\d))?)?", "RefB2");
         
         
         
