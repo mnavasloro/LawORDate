@@ -4,11 +4,15 @@ Software for detecting legal references that could be mistaken to dates by tempo
 
 A POST request containing the text to parse as the body should be sent to http://pgn2rdf.appspot.com/lawordate
 
-The current return is as follows:
+The current return (as text for better readability) is as follows:
 
-TEXT_WITHOUT_LEGAL_REFERENCES
----------------------
-MAP_OR_REPLACEMENTS
+```
+(TEXT_WITHOUT_LEGAL_REFERENCES)
+---------------------\n
+(MAP_OR_REPLACEMENTS with the following format for each one:)
 Replacement\t---->\tOriginalLegalReference\n
----------------------
-TEXT_WITH_LEGAL_REFERENCES
+---------------------\n
+(TEXT_WITH_LEGAL_REFERENCES)
+```
+
+Next implementation will switch to JSON format.
