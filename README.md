@@ -2,7 +2,7 @@
 
 Software for detecting legal references that could be mistaken to dates by temporal taggers. Works on Spanish texts for now.
 
-A POST request containing the text to parse as the body should be sent to http://pgn2rdf.appspot.com/lawordate
+A POST request containing the text to parse as the body should be sent to http://legalwhen.appspot.com/lawordate
 
 The current return (as text for better readability) is as follows:
 
