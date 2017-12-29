@@ -6,23 +6,23 @@
         <servlet-class>oeg.legalwhen.lawordate.Lawordate</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>getText</servlet-name>
-        <servlet-class>oeg.legalwhen.lawordate.TestLawORDate</servlet-class>
+        <servlet-name>LawORDateI</servlet-name>
+        <servlet-class>oeg.legalwhen.lawordate.LawORDateI</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>TestLawORDate2</servlet-name>
-        <servlet-class>oeg.legalwhen.lawordate.TestLawORDate2</servlet-class>
+        <servlet-name>LawORDateII</servlet-name>
+        <servlet-class>oeg.legalwhen.lawordate.LawORDateII</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>lawordate</servlet-name>
         <url-pattern>/lawordate</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>TestLawORDate</servlet-name>
-        <url-pattern>/TestLawORDate</url-pattern>
+        <servlet-name>LawORDateI</servlet-name>
+        <url-pattern>/LawORDateI</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>TestLawORDate2</servlet-name>
-        <url-pattern>/TestLawORDate2</url-pattern>
+        <servlet-name>LawORDateII</servlet-name>
+        <url-pattern>/LawORDateII</url-pattern>
     </servlet-mapping>
 </web-app>

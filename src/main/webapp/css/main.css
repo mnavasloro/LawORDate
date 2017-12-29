@@ -26,9 +26,32 @@ html {
 body {
 	font-family: montserrat, arial, verdana;
 }
+
+table { 
+    width: 500px; 
+    border-collapse: collapse; 
+    margin:20px auto;
+    }
+/* Zebra striping */
+tr:nth-of-type(odd) { 
+    background: #eee; 
+    }
+th { 
+    background: #27AE;
+    color: white; 
+    font-weight: bold; 
+    font-size: 13px;
+    }
+td, th { 
+    padding: 10px; 
+    border: 1px solid #ccc; 
+    text-align: left; 
+    font-size: 11px;
+    }
+
 /*form styles*/
 #msform {
-	width: 400px;
+	width: 700px;
 	margin: 50px auto;
 	text-align: center;
 	position: relative;
@@ -63,7 +86,7 @@ body {
 	font-size: 13px;
 }
 /*buttons*/
-#msform .action-button {
+#msform .button {
 	width: 100px;
 	background: #27AE;
 	font-weight: bold;
