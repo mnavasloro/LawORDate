@@ -7,14 +7,14 @@
     </servlet>
     <servlet>
         <servlet-name>getText</servlet-name>
-        <servlet-class>oeg.legalwhen.lawordate.getText</servlet-class>
+        <servlet-class>oeg.legalwhen.lawordate.TestLawORDate</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>lawordate</servlet-name>
         <url-pattern>/lawordate</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>getText</servlet-name>
-        <url-pattern>/lawordate/replacedTest</url-pattern>
+        <servlet-name>TestLawORDate</servlet-name>
+        <url-pattern>/TestLawORDate</url-pattern>
     </servlet-mapping>
 </web-app>
