@@ -46,7 +46,7 @@ public class LawORDateI extends HttpServlet {
 "<link rel=\"stylesheet\" type=\"text/css\" href=\" " + request.getContextPath() + "/css/main.css\" />\n" +
 "        \n" +
 "    <!-- multistep form -->\n" +
-"<form id=\"msform\" method=\"post\" action=\"" +  request.getContextPath() + "/oeg.legalwhen.lawordate.LawORDateII\">\n" +
+"<form id=\"msform\" method=\"post\" action=\"" +  request.getContextPath() + "/LawORDateII\">\n" +
 "  <!-- progressbar -->\n" +
 "  <ul id=\"progressbar\">\n" +
 "    <li class=\"active\">Submit the original text full of legal references</li>\n" +
