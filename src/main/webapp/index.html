@@ -17,7 +17,8 @@
 <script type="text/javascript" src="js/main.js"></script>
         
     <!-- multistep form -->
-<form id="msform" method="post" action="TestLawORDate">
+    <!-- multistep form -->
+<form id="msform">
   <!-- progressbar -->
   <ul id="progressbar">
     <li class="active">Submit the original text full of legal references</li>
@@ -26,10 +27,10 @@
   </ul>
   <!-- fieldsets -->
   <fieldset>
-          <h2 class="fs-title">SUBMIT YOUR TEXT</h2>
-          <h3 class="fs-subtitle">Introuduce your text to save the misleading temporal references</h3>
-          <input type="text" name="inputText" placeholder="Your original text" />
-          <input type="submit" name="next" value="Next" />
+    <h2 class="fs-title">SUBMIT YOUR TEXT</h2>
+    <h3 class="fs-subtitle">Introuduce your text to save the misleading temporal references</h3>
+    <input type="text" name="email" placeholder="Your original text" />
+    <input type="button" name="next" class="next action-button" value="Next" />
   </fieldset>
   <fieldset>
     <h2 class="fs-title">Replaced version</h2>
