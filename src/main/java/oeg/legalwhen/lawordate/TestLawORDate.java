@@ -32,29 +32,67 @@ public class TestLawORDate extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Processed Text</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("Original text:");
+           out.print("<html>\n" +
+"    <head>\n" +
+"        <title>test</title>\n" +
+"        <meta charset=\"UTF-8\">\n" +
+"        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n" +
+"    </head>\n" +
+"    <body>\n" +
+"<link rel=\"stylesheet\" type=\"text/css\" href=\" css/main.css\" />\n" +
+"        \n" +
+"    <!-- multistep form -->\n" +
+"<form id=\"msform\" method=\"post\" action=\"TestLawORDate2\">\n" +
+"  <!-- progressbar -->\n" +
+"  <ul id=\"progressbar\">\n" +
+"    <li class=\"active\">Submit the original text full of legal references</li>\n" +
+"    <li>Get a version optimal for temporal annotation</li>\n" +
+"    <li>Get back your legal references</li>\n" +
+"  </ul>\n" +
+"  <!-- fieldsets -->\n" +
+"  <fieldset>\n" +
+"    <h2 class=\"fs-title\">Replaced version</h2>\n" +
+"    <h3 class=\"fs-subtitle\">This version of the text is free of legal references misleading temporal taggers</h3>\n");
+
+            
+            out.println("<textarea>");
             String inputText=request.getParameter("inputText");
             out.println(inputText);
-            out.println("<textarea>");
+            out.println("</textarea>");
             Salida parsedSalida = Main.parseLegalRef(inputText);
             //MNL
             String unparsed = Main.unParseLegalRef(parsedSalida);
-            out.println("---------------------");
+            out.println("<textarea>");
             out.println(parsedSalida.toString());
             out.println("---------------------");
             out.println(unparsed);
-            out.println("<textarea>");
             out.println("</textarea>");
-            out.println("<br>");
-            out.println("<h1>Servlet getText at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            out.println("<br>");            
+            out.println("It also includes a map of replacements");
+                   
+ out.println("Please input now the temporally tagged version of the text:");                   
+                   
+out.print("          <input type=\"text\" name=\"inputText2\" placeholder=\"Tagged text\" />\n" +
+"          <input type=\"submit\" name=\"next\" value=\"Next\" />\n" +
+"  </fieldset>\n" +
+"</form>\n" +
+"</body>\n" +
+"</html>\n");
+            
+            
+            
+            
+            
+//            out.println("<!DOCTYPE html>");
+//            out.println("<html>");
+//            out.println("<head>");
+//            out.println("<title>Processed Text</title>");            
+//            out.println("</head>");
+//            out.println("<body>");
+            
+//            out.println("<h1>Servlet getText at " + request.getContextPath() + "</h1>");
+//            out.println("</body>");
+//            out.println("</html>");
         }
     }
 
