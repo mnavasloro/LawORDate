@@ -6,11 +6,18 @@
     </head>
     <body>
 <link rel="stylesheet" type="text/css" href=" css/main.css" />
+<script type="text/javascript" src="js/libs/core.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+<script type="text/javascript" src="js/libs/core.js"></script>
+<script type="text/javascript" src="js/libs/jquery.js"></script>
+<script type="text/javascript" src="js/libs/jquery.min.js"></script>
+<script type="text/javascript" src="js/libs/jquery.slim.js"></script>
 <script type="text/javascript" src="js/libs/jquery.js"></script>
 <script type="text/javascript" src="js/main.js"></script>
         
     <!-- multistep form -->
-<form id="msform">
+<form id="msform" method="post" action="TestLawORDate">
   <!-- progressbar -->
   <ul id="progressbar">
     <li class="active">Submit the original text full of legal references</li>
@@ -19,10 +26,10 @@
   </ul>
   <!-- fieldsets -->
   <fieldset>
-    <h2 class="fs-title">SUBMIT YOUR TEXT</h2>
-    <h3 class="fs-subtitle">Introuduce your text to save the misleading temporal references</h3>
-    <input type="text" name="email" placeholder="Your original text" />
-    <input type="button" name="next" class="next action-button" value="Next" />
+          <h2 class="fs-title">SUBMIT YOUR TEXT</h2>
+          <h3 class="fs-subtitle">Introuduce your text to save the misleading temporal references</h3>
+          <input type="text" name="inputText" placeholder="Your original text" />
+          <input type="submit" name="next" value="Next" />
   </fieldset>
   <fieldset>
     <h2 class="fs-title">Replaced version</h2>
