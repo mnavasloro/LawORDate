@@ -9,7 +9,6 @@ package oeg.legalwhen.lawordate;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -35,6 +34,12 @@ public class LawORDateI extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter() ;
+        
+        String path1 = request.getParameter("sub");
+        String path2 = request.getParameter("TTag");        
+        
+        
+        if(path1!=null){
             /* TODO output your page here. You may use following sample code. */
            out.print("<html>\n" +
 "    <head>\n" +
@@ -82,6 +87,62 @@ out.print("          <input type=\"text\" name=\"inputText2\" placeholder=\"Tagg
             
 ServletContext context = request.getSession().getServletContext();
 context.setAttribute("map",parsedSalida);
+        }
+        else if (path2 != null){
+                       out.print("<html>\n" +
+"    <head>\n" +
+"        <title>test</title>\n" +
+"        <meta charset=\"UTF-8\">\n" +
+"        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n" +
+"    </head>\n" +
+"    <body>\n" +
+"<link rel=\"stylesheet\" type=\"text/css\" href=\" "+  request.getContextPath() + "/css/main.css\" />\n" +
+"        \n" +
+"    <!-- multistep form -->\n" +
+"<form id=\"msform\">\n" +
+"  <!-- progressbar -->\n" +
+"  <ul id=\"progressbar\">\n" +
+"    <li class=\"active\">Submit the original text full of legal references</li>\n" +
+"    <li>Get a version optimal for temporal annotation</li>\n" +
+"    <li>Get back your legal references</li>\n" +
+"  </ul>\n" +
+"  <!-- fieldsets -->\n" +
+"  <fieldset>\n" +
+"   <h2 class=\"fs-title\">Final text</h2>\n" +
+"    <h3 class=\"fs-subtitle\">Your original text with real temporal annotations provided by HeidelTime [1]</h3>");
+
+            String input = request.getParameter("inputText");
+            //MNL
+            Salida withLoD = Main.parseAndTag(input);
+            String withoutLoD = Main.onlyParse(input);
+            out.println("<textarea rows=\"7\">");
+            out.println(withLoD.txt);
+            out.println("</textarea>");
+            
+            out.println("<p>   </p>");        
+            
+            out.println("    <h2 class=\"fs-title\" >MAP OF REPLACEMENTS</h2>\n" + "<h3 class=\"fs-subtitle\">The replacements done by HeidelTime are the following:</h3>");       
+//            out.println("<textarea rows=\"3\">");           
+            out.println(withLoD.toTableWithoutNumber());
+            
+            out.println("<br>");                 
+
+out.print("  </fieldset>\n" +            "  <!-- fieldsets -->\n" +
+"  <fieldset>\n" +
+"   <h2 class=\"fs-title\">Final text</h2>\n" +
+"    <h3 class=\"fs-subtitle\">Without LawORDate preprocessing, the result by HeidelTime [1] would have been:</h3>");
+
+            out.println("<textarea rows=\"7\">");
+            out.println(withoutLoD);
+            out.println("</textarea>");
+            out.println("<br>");                 
+                   
+
+out.print("  </fieldset>\n" +
+"</form>\n" +
+"</body>\n" +
+"</html>\n");
+        }
 //request.getRequestDispatcher("/servlet/TestLawORDate2");//.forward(request,response);    
             
             

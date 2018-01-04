@@ -2,7 +2,11 @@ package oeg.legalwhen.lawordate;
 
 
 
-import java.util.ArrayList;
+import de.unihd.dbs.heideltime.standalone.DocumentType;
+import de.unihd.dbs.heideltime.standalone.HeidelTimeStandalone;
+import de.unihd.dbs.heideltime.standalone.OutputType;
+import de.unihd.dbs.heideltime.standalone.POSTagger;
+import de.unihd.dbs.uima.annotator.heideltime.resources.Language;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -109,6 +113,33 @@ public class Main {
         }
         
         return txt;
+    }
+    
+    public static Salida parseAndTag(String txt){
+        
+        Salida s = parseLegalRef(txt);
+        String removing = onlyParse(s.txt);
+        
+        s.txt = removing;
+        
+        String out = unParseLegalRef(s);
+        
+        s.txt = out;
+        
+        return s;
+    }
+    
+    public static String onlyParse(String txt){
+        
+        try {
+            HeidelTimeStandalone heidelTime  = new HeidelTimeStandalone(Language.ENGLISH, DocumentType.NARRATIVES, OutputType.TIMEML,
+                    "\\lib\\heideltime-standalone\\config.props", POSTagger.NO, true);    
+            return heidelTime.process(txt);
+            
+        } catch (Exception ex) {
+            System.err.print(ex.toString());
+        }
+        return "";
     }
     
     
