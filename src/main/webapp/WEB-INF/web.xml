@@ -1,14 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
     <display-name>LegalWhen</display-name>
-    
     <servlet>
         <servlet-name>lawordate</servlet-name>
         <servlet-class>oeg.legalwhen.lawordate.Lawordate</servlet-class>
     </servlet>
-    
+    <servlet>
+        <servlet-name>LawORDateI</servlet-name>
+        <servlet-class>oeg.legalwhen.lawordate.LawORDateI</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LawORDateII</servlet-name>
+        <servlet-class>oeg.legalwhen.lawordate.LawORDateII</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>lawordate</servlet-name>
         <url-pattern>/lawordate</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LawORDateI</servlet-name>
+        <url-pattern>/LawORDateI</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LawORDateII</servlet-name>
+        <url-pattern>/LawORDateII</url-pattern>
     </servlet-mapping>
 </web-app>
