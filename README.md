@@ -16,3 +16,7 @@ Replacement\t---->\tOriginalLegalReference\n
 ```
 
 Next implementation will switch to JSON format.
+
+See more here: http://ceur-ws.org/Vol-2049/04paper.pdf
+
+

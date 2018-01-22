@@ -5,6 +5,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.math.BigDecimal;
+import java.text.MessageFormat;
+import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -23,8 +27,13 @@ public class Lawordate extends HttpServlet {
             resp.setStatus(200);
             resp.setContentType("text/plain;charset=utf-8");
             resp.setCharacterEncoding("utf-8");
-            w.println("Please use the POST method");
-                    
+            w.println("Please use the POST method...");
+            
+            String s = testsystem();
+            w.println(s);
+            
+            
+            
     }
     
     /**
@@ -81,4 +90,27 @@ public class Lawordate extends HttpServlet {
         body = stringBuilder.toString();
         return body;
     }    
+
+
+    public static String testsystem(){
+        try{
+        ProcessBuilder builder = new ProcessBuilder().command("ls", "$home");
+        Process process = builder.start();
+        process.waitFor(10, TimeUnit.SECONDS);
+        int value = process.exitValue();
+        if (value != 0) {
+            throw new Exception(MessageFormat.format("Código de salida con error (%d)", value));
+        }
+        BufferedReader br = new BufferedReader(new InputStreamReader(process.getInputStream(), "UTF-8"));
+        String result = br.lines().collect(Collectors.joining("\n"));
+        br.close();
+        String seconds = result.split(" ")[0];
+        String cadena = String.format("Segundos desde el inicio del sistema: %.2f", new BigDecimal(seconds));
+        return cadena;
+        }catch(Exception e)
+        {
+            return "-";
+        }
+    }    
+    
 }
