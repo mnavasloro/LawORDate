@@ -2,10 +2,16 @@ package oeg.legalwhen.lawordate;
 
 
 
-import java.util.ArrayList;
+import de.unihd.dbs.heideltime.standalone.DocumentType;
+import de.unihd.dbs.heideltime.standalone.HeidelTimeStandalone;
+import de.unihd.dbs.heideltime.standalone.OutputType;
+import de.unihd.dbs.heideltime.standalone.POSTagger;
+import de.unihd.dbs.uima.annotator.heideltime.resources.Language;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -109,6 +115,36 @@ public class Main {
         }
         
         return txt;
+    }
+    
+    public static Salida parseAndTag(String txt, String path){
+        
+        Salida s = parseLegalRef(txt);
+        String removing = onlyParse(s.txt, path);
+        
+        s.txt = removing;
+        
+        String out = unParseLegalRef(s);
+        
+        s.txt = out;
+        
+        return s;
+    }
+    
+    public static String onlyParse(String txt, String path){
+        
+        try {
+            HeidelTimeStandalone heidelTime = new HeidelTimeStandalone(Language.SPANISH, DocumentType.NARRATIVES, OutputType.TIMEML, path, POSTagger.NO, true);   
+            String output = heidelTime.process(txt);
+            return output;
+//            return "hola";
+//         } catch (Exception ex) {
+//            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+//        }   
+        } catch (Exception ex) {
+            System.err.print(ex.toString());
+        }
+        return "";
     }
     
     

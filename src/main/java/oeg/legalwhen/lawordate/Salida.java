@@ -28,7 +28,7 @@ public class Salida {
         return output;
     }
     
-        public String toTable(){
+    public String toTable(){
         String output="";
         if(mapa.size()==0)
             return "";
@@ -43,6 +43,29 @@ public class Salida {
         for(String k : mapa.keySet()){
             output = output + "<tr>\n" +
 "            <td>" + k + "</td>\n" +
+"            <td>" + mapa.get(k) + "</td>\n" +
+"        </tr>\n";            
+        }
+        return output + " </tbody>\n" +
+"</table>";
+    }
+    
+    public String toTableWithoutNumber(){
+        String output="";
+        if(mapa.size()==0)
+            return "";
+        output="<table>\n" +
+"    <thead>\n" +
+"        <tr>\n" +
+"            <th>Replacement</th>\n" +
+"            <th>Original</th>\n" +
+"        </tr>\n" +
+"    </thead>\n" + 
+    "<tbody>\n";
+        for(String k : mapa.keySet()){
+            String[] parts = k.split("\\d");
+            output = output + "<tr>\n" +
+"            <td>" + parts[0] + "</td>\n" +
 "            <td>" + mapa.get(k) + "</td>\n" +
 "        </tr>\n";            
         }
