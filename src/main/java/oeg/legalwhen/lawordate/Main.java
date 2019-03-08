@@ -7,6 +7,8 @@ import de.unihd.dbs.heideltime.standalone.HeidelTimeStandalone;
 import de.unihd.dbs.heideltime.standalone.OutputType;
 import de.unihd.dbs.heideltime.standalone.POSTagger;
 import de.unihd.dbs.uima.annotator.heideltime.resources.Language;
+import java.io.File;
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -14,6 +16,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import org.apache.commons.io.FileUtils;
+//import org.cleartk.timeml.TimeMlAnnotate;
 
 /**
  *
@@ -147,7 +151,30 @@ public class Main {
         return "";
     }
     
-    
+//    public static String eventParse(String txt){
+//        
+//        File f = new File("test1235487241635clearTK.txt");
+//        String outputfile = f.getAbsolutePath().replace(f.getName(),"");
+//        
+//        try{
+//            PrintWriter out = new PrintWriter(f.getAbsolutePath());
+//            out.println(txt);
+//            out.flush();
+//        } catch (Exception ex) {
+//            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        try{
+//            TimeMlAnnotate.main(f.getAbsolutePath(),outputfile);
+//            File fileout = new File(f.getAbsolutePath()+".tml");
+//            String output = FileUtils.readFileToString(fileout, "UTF-8");
+//            f.deleteOnExit();
+//            fileout.deleteOnExit();
+//            return output;
+//        } catch (Exception ex) {
+//            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        return "";
+//    }
     
 
 

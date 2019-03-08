@@ -7,6 +7,8 @@ package oeg.legalwhen.lawordate;
  */
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -45,6 +47,7 @@ public class LawORDateI extends HttpServlet {
                     + "        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n"
                     + "    </head>\n"
                     + "    <body>\n"
+                    + " <script src=\"/js/jquery.balloon.js\"></script>"
                     + "<link rel=\"stylesheet\" type=\"text/css\" href=\" " + request.getContextPath() + "/css/main.css\" />\n"
                     + "        \n"
                     + "    <!-- multistep form -->\n"
@@ -61,7 +64,7 @@ public class LawORDateI extends HttpServlet {
                     + "    <h3 class=\"fs-subtitle\">Your original text with real temporal annotations provided by state-of-the-art temporal tagger as <a href=\"https://github.com/HeidelTime/\">HeidelTime</a> after our preprocessing</h3>");
 
             String input = request.getParameter("inputText");
-
+            
             response.setStatus(200);
             response.setContentType("text/html;charset=UTF-8");
             ServletContext context = getServletContext();
@@ -71,10 +74,24 @@ public class LawORDateI extends HttpServlet {
             //MNL
             Salida withLoD = Main.parseAndTag(input, path);
             String withoutLoD = Main.onlyParse(input, path);
-            out.println("<textarea rows=\"7\">");
-            out.println(withLoD.txt);
+            
+            
+            String input2 = createHighlights(withLoD.txt);
+            
+            // add; change color:
+            
+            out.println("\n<script> $(function() { eval($('#sample1 .sample-script').text()); }); </script>\n<style>\n" +
+"          #sample1-demo { font-size: 90%; padding: 0 10px 10px 10px; }\n" +
+"          #sample1-demo a { color: #aec05b; text-decoration: underline; }\n" +
+"          #sample1-demo img { float: right; border: none; }\n" +
+"        </style>\n");
+            out.println("<div class='testDiv' id=\"testscroll\">");
+//            out.println("<textarea rows=\"7\">");
+            out.println(input2);
+//            out.println(withLoD.txt);
 //            out.println();
-            out.println("</textarea>");
+            out.println("</div>");
+//            out.println("</textarea>");
 
             out.println("<p>   </p>");
 
@@ -87,9 +104,14 @@ public class LawORDateI extends HttpServlet {
             out.print("   <h2 class=\"fs-title\">Alternative final text</h2>\n"
                     + "    <h3 class=\"fs-subtitle\">Without our LawORDate preprocessing, the result by <a href=\"https://github.com/HeidelTime/\">HeidelTime</a> would have been:</h3>\n");
 
-            out.println("<textarea rows=\"7\">");
-            out.println(withoutLoD);
-            out.println("</textarea>");
+            out.println("<div class='testDiv' id=\"testscroll\">");
+//            out.println("<textarea rows=\"7\">");
+
+            input2 = createHighlights(withoutLoD);
+           
+            out.println(input2);
+            out.println("</div>");
+//            out.println("</textarea>");
             out.println("<br>");
 
             out.print("  </fieldset>\n"
@@ -186,5 +208,39 @@ public class LawORDateI extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+    
+    
+    public String createHighlights(String input2) {
+        input2 = input2.replaceFirst(Pattern.quote("<?xml version=\"1.0\"?>\n" + "<!DOCTYPE TimeML SYSTEM \"TimeML.dtd\">\n" + "<TimeML>"), "");
+        input2 = input2.replaceFirst(Pattern.quote("</TimeML>"), "");
+        input2 = input2.replaceAll("</TIMEX3>", "</span>");
+
+        String pattern = "(<TIMEX3 ([^>]*)>)";
+        Pattern r = Pattern.compile(pattern);
+        Matcher m = r.matcher(input2);
+        StringBuffer sb = new StringBuffer();
+        while (m.find()) {
+            String color = "rgba(255, 165, 0, 0.5)";//"Orange";
+            String contetRegex = m.group(2);
+            contetRegex = contetRegex.replaceAll("\"", "");
+            contetRegex = contetRegex.replaceAll(" ", "\n");
+            if (contetRegex.contains("SET")) {
+                color = "rgba(135, 206, 235, 0.5)";//DodgerBlue";
+            } else if (contetRegex.contains("DURATION")) {
+                color = "hsla(9, 100%, 64%, 0.5)"; //Tomato
+            } else if (contetRegex.contains("TIME")) {
+                color = "rgba(102, 205, 170, 0.5)";//"MediumSeaGreen";
+            }
+
+            String aux2 = m.group(0);
+            aux2 = aux2.replace(">", "");
+
+            m.appendReplacement(sb, aux2.replaceFirst(Pattern.quote(aux2), "<span style=\"background-color:"
+                    + color + "\" title=\"" + contetRegex + "\">"));
+        }
+        m.appendTail(sb); // append the rest of the contents
+
+        return sb.toString();
+    }
 
 }
